@@ -60,18 +60,21 @@ class OXOcoinflipUI(tk.Frame):
 
         tk.Label(self, text=winner_text, font=("Ariel", 16, "bold")).pack(pady=12)
         tk.Button(self, text="Start the OXO Game", font=("Impact", 13), width=16, borderwidth=7, command=lambda: start_oxo_game(self.controller)).pack(pady=11)
-
+   #The controller saves the information, in here which is the outcome after flipping the coin and this switches 
         self.controller.coin_flip_result = outcome
         self.controller.winner_text = winner_text
 
-
+#start oxo game funtion is an controller which switches between Coin Flip UI and OXO Terminal Board.
+#it uses subprocess that destroys the COIN FLIP UI program right after the start button is clicked.
 def start_oxo_game(controller):
     print("Now loading OXO Game Board...")
     controller.destroy()
     print("Launching OXO Game Board UI...")
     oxo_terminal_game("X", "O")
     subprocess.run([sys.excutable, "oxoterminalboard.py"])
-    
+
+#this function is the most important in running this program as it will open the classes and functions through the root as root is the window that contains the widgets.
+#In order to change the favicon of the application, I found the solution of adding a new favicon through researching the function of iconbitmap.
 if __name__ == "__main__":
     root = tk.Tk()
     root.iconbitmap(r'C:\Users\altar\Downloads\angelina-kelley-jinx.ico')    
