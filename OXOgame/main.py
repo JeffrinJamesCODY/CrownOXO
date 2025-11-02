@@ -1,11 +1,11 @@
 import time
 import random
-from flask import Flask, render_template, request, jsonify
-app = Flask(__name__)
 import webbrowser
 import tkinter as tk
 from tkinter import font
 from oxoterminalboard import oxo_terminal_game
+import subprocess
+import sys
 
 # UI for coin flip of OXO game
 class OXOcoinflipUI(tk.Frame):
@@ -70,6 +70,7 @@ def start_oxo_game(controller):
     controller.destroy()
     print("Launching OXO Game Board UI...")
     oxo_terminal_game("X", "O")
+    subprocess.run([sys.excutable, "oxoterminalboard.py"])
     
 if __name__ == "__main__":
     root = tk.Tk()
