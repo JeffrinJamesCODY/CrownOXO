@@ -1,6 +1,6 @@
 import time
 import random
-
+goes = 9
 def oxo_terminal_game(player1, player2):
     winningcombos = (
         (1, 2, 3), (4, 5, 6), (7, 8, 9),
@@ -24,7 +24,7 @@ def oxo_terminal_game(player1, player2):
     grid = list("123456789")
     player = player1
 
-    for i in range(9):
+    for i in range(goes):
         play()
         try:
             space = int(input(f"Please enter a place for {player}: "))
@@ -33,6 +33,7 @@ def oxo_terminal_game(player1, player2):
             grid[space - 1] = player
         except ValueError:
             print("Please enter the number of an open space (1–9).")
+            goes += 1
             continue
 
         if check_win(player):
