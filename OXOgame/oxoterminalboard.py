@@ -24,7 +24,7 @@ def oxo_terminal_game(player1, player2):
     grid = list("123456789")
     player = player1
 
-    for i in range(goes):
+    while goes > 0:
         play()
         try:
             space = int(input(f"Please enter a place for {player}: "))
@@ -33,7 +33,6 @@ def oxo_terminal_game(player1, player2):
             grid[space - 1] = player
         except ValueError:
             print("Please enter the number of an open space (1–9).")
-            goes += 1
             continue
 
         if check_win(player):
@@ -42,6 +41,7 @@ def oxo_terminal_game(player1, player2):
             break
 
         player = player1 if player == player2 else player2
+        goes -= 1
 
     else:
         play()
