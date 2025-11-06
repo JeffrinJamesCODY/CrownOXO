@@ -24,7 +24,7 @@ def oxo_terminal_game(player1, player2):
     grid = list("123456789")
     player = player1
 
-    while goes > 0:
+    while goes > 1:
         play()
         try:
             space = int(input(f"Please enter a place for {player}: "))
