@@ -17,6 +17,7 @@ def oxo_terminal_game(player1, player2):
         (1, 4, 7), (2, 5, 8), (3, 6, 9),
         (1, 5, 9), (3, 5, 7),
     )
+    goes = 9
 #function to display the game board in terminal, the grid is divided into 3 rows and 3 columns which is represented using list slicing.
     def play():
         print("\n", " | ".join(grid[:3]))
@@ -34,7 +35,7 @@ def oxo_terminal_game(player1, player2):
     grid = list("123456789")
     player = player1
 # The game runs for a maximum of 9 moves, alternating between players after each valid move.
-    for i in range(9):
+    while goes > 1:
         play()
         try: # Prompting the current player to enter a position for their move. Input is validated to ensure it's an available space.
             space = int(input(f"Please enter a place for {player}: "))
@@ -51,6 +52,7 @@ def oxo_terminal_game(player1, player2):
             break
 # Switch players for the next turn.
         player = player1 if player == player2 else player2
+        goes -= 1
 # If all moves are exhausted without a winner, declare the game a draw.
     else:
         play()
